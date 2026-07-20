@@ -1,17 +1,10 @@
 extends Area2D
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+var isSeleted = false
+var current_target_pos = null
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			print("Physics object clicked!")
+		if event.button_index == MOUSE_BUTTON_LEFT: isSeleted = true
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			current_target_pos = get_global_mouse_position()
